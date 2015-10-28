@@ -1,0 +1,64 @@
+<head>
+  <title>simple-player</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project name</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <br>
+  <div class="container-fluid">
+    <div class="col-sm-4">
+      <div class="vid">
+      {{> YTPlayer name="youtube"}}
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="starter-template">
+        <h1>youtube-player</h1>
+        <p class="lead">busca y reproduc un video de youtube</p>
+        <div class="input-group">
+          <input class="form-control" placeholder="Buscar videos..." id="search-input" type="text">
+          <span class="input-group-btn">
+            <button class="btn btn-danger btn-search-yt" type="button">Go!</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h2 class="text-center">Resultados</h2>
+      {{#each searchResults}}
+      <div class="col-sm-4">
+        <a href="#/" class="thumbnail" data-video-id="{{id.videoId}}">
+          <img data-holder-rendered="true" src="{{snippet.thumbnails.default.url}}">
+        </a>
+        <p class="media-heading"><small>{{snippet.title}}</small></p>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</template>
